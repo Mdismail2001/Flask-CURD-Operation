@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+
+    <table class="min-w-full bg-white border border-gray-300 mt-4">
+        <thead>
+            <tr>
+                <th class="border px-4 py-2">id</th>
+                <th class="border px-4 py-2">Name</th>
+                <th class="border px-4 py-2">Description</th>
+                <th class="border px-4 py-2">Salary</th>
+                <th class="border px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for add in data %}
+                <tr>
+                    <td class="border px-4 py-2">{{ add.id }}</td>
+                    <td class="border px-4 py-2">{{ add.name }}</td>
+                    <td class="border px-4 py-2">{{ add.description }}</td>
+                    <td class="border px-4 py-2">{{ add.salary }}</td>
+                    <td class="border px-4 py-2">
+                        <a href="{{ url_for('add_info') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Add Employee</a>
+                        <a href="{{ url_for('update', id=add.id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Update</a>
+                        <a href="{{ url_for('delete', id=add.id) }}" class="bg-red-500 text-white px-4 py-2 rounded">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not data %}
+        <p class="text-gray-600">No users found.</p>
+    {% endif %}
+{% endblock content %}

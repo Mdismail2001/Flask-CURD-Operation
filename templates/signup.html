@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+        
+    <body class="bg-gray-100">
+    
+        <!-- Signup Form Container -->
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+                <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">Register</h2>
+                
+                <!-- Signup Form -->
+                <form action="/signup" method="POST" class="space-y-4">
+                    
+                    <!-- Full Name Field -->
+                    <div>
+                        <label for="fullname" class="block text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Full Name" required
+                            class="w-full mt-1 px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+    
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required
+                            class="w-full mt-1 px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+    
+                    <!-- Username Field -->
+                    <div>
+                        <label for="username" class="block text-gray-700">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Create a username" required
+                            class="w-full mt-1 px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+    
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-gray-700">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required
+                            class="w-full mt-1 px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+    
+                <!-- Already have an account? -->
+                <p class="text-center mt-4 text-gray-600">Already have an account? 
+                    <a href="/login" class="text-blue-600 hover:underline">Login</a>
+                </p>
+            </div>
+        </div>
+    
+    </body>
+    {% endblock content %}
+
