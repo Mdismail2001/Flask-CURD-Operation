@@ -4,6 +4,7 @@ from flask import render_template, redirect, url_for
 from models import db, Signup_Info, Add_Info
 
 app = Flask(__name__)
+app.secret_key='my secet'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 # app.config['SQLALCHEMY_TRACK_MODIFICATION']= False
@@ -62,6 +63,29 @@ def signup():
         return redirect(url_for('home')) 
     return render_template('signup.html')
 
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+from werkzeug.security import check_password_hash
+
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        user = Signup_Info.query.filter_by(username = username, password=password).first()
+        
+        if user:  
+            session['user_id'] = user.id  
+            return redirect(url_for('views'))  
+        else:
+            flash("Invalid username or password", "danger")
+    
+    return render_template('login.html')
+
+
+
 
 @app.route('/add_info', methods=['GET', 'POST'])  
 def add_info():
@@ -117,13 +141,6 @@ def delete(id):
     return redirect(url_for('views'))
     
 
-# @app.route("/login", methods=["GET", "POST"])
-# def login():
-#     if request.method == 'POST':
-#         form_data = request.form
-#         username = form_data.get['username']
-#         return redirect(url_for('home'),{username:username})
-#     return render_template("login.html")
 
 
 @app.route('/views')

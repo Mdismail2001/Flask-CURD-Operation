@@ -21,7 +21,6 @@
                     <td class="border px-4 py-2">{{ add.description }}</td>
                     <td class="border px-4 py-2">{{ add.salary }}</td>
                     <td class="border px-4 py-2">
-                        <a href="{{ url_for('add_info') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Add Employee</a>
                         <a href="{{ url_for('update', id=add.id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Update</a>
                         <a href="{{ url_for('delete', id=add.id) }}" class="bg-red-500 text-white px-4 py-2 rounded">Delete</a>
                     </td>
